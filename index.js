@@ -8,15 +8,14 @@ const ejsLayouts = require("express-ejs-layouts")
 app.set("view engine", "ejs")
 app.use(ejsLayouts)
 
+// controller middleware
+app.use("/akreha", require("./controllers/akreha.js"))
+app.use("/aheba", require("./controllers/aheba.js"))
+
 // routes
 // home
 app.get("/", (req, res)=>{
     res.render("home.ejs")
-})
-
-app.get("/animals", (req, res)=>{
-    const favAnimals = ["dolphin", "killer whale", "turtle"]
-    res.render("animals.ejs", {animals: favAnimals})
 })
 
 app.listen(PORT, ()=>{
